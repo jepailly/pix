@@ -6,4 +6,5 @@ export default Model.extend({
   code: attr('string'),
   title: attr('string'),
   idPixLabel: attr('string'),
+  customLandingPageText: attr('string'),
 });

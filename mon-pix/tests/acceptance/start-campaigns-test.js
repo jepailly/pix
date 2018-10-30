@@ -40,18 +40,44 @@ describe('Acceptance | Campaigns | Start Campaigns', function() {
       });
 
       context('When the user has not seen the landing page', function() {
-        beforeEach(async function() {
-          await visit('/campagnes/AZERTY1');
-        });
         it('should redirect to landing page', async function() {
+          // when
+          await visit('/campagnes/AZERTY1');
+
           // then
           return andThen(() => {
             expect(currentURL()).to.equal('/campagnes/AZERTY1/presentation');
           });
         });
+
+        context('When campaign has custom text for the landing page', function() {
+          it('should show the custom text on the landing page', async function() {
+            // when
+            await visit('/campagnes/AZERTY2');
+
+            // then
+            return andThen(() => {
+              expect(find('.campaign-landing-page__start__text')).to.have.lengthOf(2);
+              findWithAssert('.campaign-landing-page__start__text__custom-text');
+            });
+          });
+        });
+
+        context('When campaign does not have custom text for the landing page', function() {
+          it('should show only the defaulted text on the landing page', async function() {
+            // when
+            await visit('/campagnes/AZERTY1');
+
+            // then
+            return andThen(() => {
+              expect(find('.campaign-landing-page__start__text')).to.have.lengthOf(1);
+            });
+          });
+        });
+
       });
 
-      context('When campaign have external id', function() {
+      context('When campaign has external id', function() {
         beforeEach(async function() {
           await startCampaignByCode('AZERTY1');
           await fillIn('#pix-email', 'jane@acme.com');

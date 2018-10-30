@@ -93,9 +93,10 @@ export default function(server) {
   });
   server.create('campaign', {
     id: '2',
-    name: 'Campagne 2 sans ID Externe',
+    name: 'Campagne 2 sans Id Externe',
     code: 'AZERTY2',
     idPixLabel: null,
+    customLandingPageText: 'Texte personnalisé pour la Campagne 2'
   });
 
   server.create('campaignParticipation', {
