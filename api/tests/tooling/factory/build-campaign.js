@@ -12,6 +12,18 @@ module.exports = function buildCampaign(
     creatorId = faker.random.number(2),
     organizationId = faker.random.number(2),
     targetProfileId = faker.random.number(2),
+    organizationLogoUrl = faker.internet.url()
   } = {}) {
-  return new Campaign({ id, name, code, title, idPixLabel, createdAt, creatorId, organizationId, targetProfileId });
+  return new Campaign({
+    id,
+    name,
+    code,
+    title,
+    idPixLabel,
+    createdAt,
+    creatorId,
+    organizationId,
+    targetProfileId,
+    organizationLogoUrl
+  });
 };
